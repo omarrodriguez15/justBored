@@ -36,13 +36,18 @@ def PrintMatch(a, b, num):
     print '\t  Match {2}\n\n\t{0} VS {1}'.format(a,b,num)
     BottomBox()
     
+def PrintMatchBye(a, num):
+    TopBox()
+    print '\t  Match {1}\n\n\t{0} Gets a bye'.format(a,num)
+    BottomBox()
+    
 def IsEven(total):
     if (total % 2) == 0:
         return True
     else:
         return False
 
-def BuildRounds(players):
+def BuildRound(players, round):
     tPlayers = list(players)
     winners = []
     cnt=0
@@ -52,11 +57,11 @@ def BuildRounds(players):
         cnt+=1
         if len(players) != 1:
             PrintMatch(players.pop(),players.pop(),cnt)
-            winners.append(tPlayers[i])
+            winners.append('winner of match {}'.format(cnt))
         else:
             #This will only be hit if players list is odd
-            PrintMatch(players.pop(), 'BYE', cnt)
-            winners.append(tPlayers[i])
+            PrintMatchBye(players.pop(), cnt)
+            winners.append('winner of match {}'.format(cnt))
         
     return winners
     
@@ -69,10 +74,10 @@ def BuildBracket(players):
     
     for round in range(int(rounds)):
         print 'Round {} '.format(round+1)
-        winners = BuildRounds(players)
+        winners = BuildRound(players, round)
         
         if len(winners) == 1:
-            print '{} is the winner!!!'.format(winners.pop())
+            print '{} is the winner!!!'.format(winners.pop()+' round '+str(round+1)+' ')
             
         players = list(winners)
         
