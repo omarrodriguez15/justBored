@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<img id="panel1" src="img\tiger.jpg" alt="The Scream" width="0" height="0">
+<img id="panel2" src="img\whale.jpg" alt="The Scream" width="0" height="0">
+<img id="panel3" src="img\penny.jpg" alt="The Scream" width="0" height="0">
+<img id="panel4" src="img\stock.jpg" alt="The Scream" width="0" height="0">
+
+<p>Canvas to fill:</p>
+<canvas id="myCanvas" width="1024" height="768"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+
+<script>
+function myCanvas() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext('2d');
+    var panel1 = document.getElementById("panel1");
+    var panel2 = document.getElementById("panel2"); 
+    var panel3 = document.getElementById("panel3");
+    var panel4 = document.getElementById("panel4");
+    
+    ctx.drawImage(panel1,0,0, 512, 192);
+    ctx.drawImage(panel2,512,0, 512, 768);
+    ctx.drawImage(panel3,0,384, 512, 384);
+    ctx.drawImage(panel4,0,192, 512, 192);
+}
+window.onload = myCanvas;
+</script>
+
+</body>
+</html>
