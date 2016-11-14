@@ -29,21 +29,15 @@ def ListDirectories(dir, recursive = False, buffer = []):
 def ListAllFiles(dir, recursive = False, ext = '.cs', count = 0):
    skip_dot_files = True
    files = os.listdir(dir)
-
    for file in files:
       if skip_dot_files and file.startswith('.'):
          continue
-
       if os.path.isdir(os.path.join(dir, file)):
          if recursive:
             count = ListAllFiles(os.path.join(dir, file), True, ext, count)
-            
-            # if not count is None:
-            #    print count
-            #    count += result
       elif file.endswith(ext):
+         #print file
          count += ReadFile(os.path.join(dir, file))
-         return count
    return count
 
 def ReadFile(filename):
